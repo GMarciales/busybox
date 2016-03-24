@@ -12,20 +12,15 @@ Changes:
 
 ## Building
 
-Install docker (https://www.docker.com) and run:
+Install docker (https://www.docker.com) and run:  
+``docker run -t -v <git repository base dir>:/source alpine sh /source/gns3_build/build_busybox``
 
-`docker run -t -v <git repository base dir>:/source alpine sh /source/gns3_build/build_busybox`
-
-e.g, when you install this git repository in /home/xyz/busybox then run
-
-`docker run -t -v /home/xyz/busybox:/source alpine sh /source/gns3_build/build_busybox`
+e.g, when you install this git repository in /home/xyz/busybox then run  
+``docker run -t -v /home/xyz/busybox:/source alpine sh /source/gns3_build/build_busybox``
 
 The directory must be given as an absolute path.
 
-From root directory of busybox:
-
-```docker run -t -v `pwd`:/source alpine sh /source/gns3_build/build_busybox```
-
-
+From root directory of busybox:  
+``docker run -t -v `pwd`:/source alpine sh /source/gns3_build/build_busybox``
 
 After the build the binary (busybox) is copied to the base directory.
