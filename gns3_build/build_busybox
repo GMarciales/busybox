@@ -1,12 +1,13 @@
 #!/bin/sh
 
 # install build tools
-apk --update add gcc linux-headers musl-dev make
+apk --update add gcc linux-headers musl-dev make patch fortify-headers
 
 # copy source, so patches won't change the originals
 mkdir /build
-cp -pR /source/* /build
+cp -R /source/* /build
 cd /build
+rm -f busybox
 
 patch_files="
 	busybox-1.11.1-bb.patch
@@ -41,12 +42,12 @@ patch_files="
 
 # modify source files
 for i in $patch_files; do
-	patch -p1 -i gns3_build/$i || exit 1
+	patch -p1 -i gns3_build/$i || exit 1
 done
-cp -p gns3_build/nologin.c loginutils/
+cp gns3_build/nologin.c.new loginutils/nologin.c
 
 # compile
-cp -p gns3_build/busyboxconfig .config
+cp gns3_build/busyboxconfig .config
 make silentoldconfig || exit 1
-make || exit 1
+make busybox || exit 1
 mv busybox /source
