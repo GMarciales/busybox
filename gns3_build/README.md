@@ -22,4 +22,9 @@ e.g, when you install this git repository in /home/xyz/busybox then run
 
 The directory must be given as an absolute path.
 
+From root directory of busybox:
+`docker run -t -v \`pwd\`:/source alpine sh /source/gns3_build/build_busybox`
+
+
+
 After the build the binary (busybox) is copied to the base directory.
