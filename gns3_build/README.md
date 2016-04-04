@@ -9,6 +9,8 @@ Changes:
 - Changed busyboxconfig to static build
 - In busyboxconfig changed default udhcpc script to
   `CONFIG_UDHCPC_DEFAULT_SCRIPT="/gns3/etc/udhcpc/default.script"`
+- And dhcp default options
+  `CONFIG_IFUPDOWN_UDHCPC_CMD_OPTIONS="-R --timeout=1 --tryagain=1 -b"`
 
 ## Building
 
